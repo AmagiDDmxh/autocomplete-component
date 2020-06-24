@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
 import React from 'react';
 import Select, { Option } from 'rc-select';
-import '../assets/index.less';
+import { OptionProps } from 'rc-select/lib/Option'
+import './index.less';
+
+type Option = OptionProps[]
 
 class Combobox extends React.Component {
   state = {
@@ -12,27 +15,27 @@ class Combobox extends React.Component {
 
   textareaRef = React.createRef<HTMLTextAreaElement>();
 
-  timeoutId: number;
+  timeoutId!: number;
 
   componentDidMount() {
     console.log('Ref:', this.textareaRef);
   }
 
-  onChange = (value, option) => {
+  onChange = (value: string, option: any) => {
     console.log('onChange', value, option);
     this.setState({
       value,
     });
   };
 
-  onKeyDown = e => {
+  onKeyDown = (e: any) => {
     const { value } = this.state;
     if (e.keyCode === 13) {
       console.log('onEnter', value);
     }
   };
 
-  onSelect = (v, option) => {
+  onSelect = (v: string, option: any) => {
     console.log('onSelect', v, option);
   };
 
@@ -40,7 +43,7 @@ class Combobox extends React.Component {
     console.log('onSearch:', text);
   };
 
-  onAsyncChange = value => {
+  onAsyncChange = (value: string) => {
     window.clearTimeout(this.timeoutId);
 
     this.setState({

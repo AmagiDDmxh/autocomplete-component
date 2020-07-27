@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { LabelValueType, RawValueType } from '../Autocomplete/Autocomplete';
+import SingleSelector from './Selector';
 
 export interface RefSelectorProps {
   focus: () => void;
@@ -13,7 +15,6 @@ export interface SelectorProps {
   /** Display in the Selector value, it's not same as `value` prop */
   values: LabelValueType[];
   multiple: boolean;
-  mode: Mode;
   searchValue: string;
   activeValue: string;
   inputElement: JSX.Element;
@@ -59,7 +60,6 @@ const Selector: React.RefForwardingComponent<RefSelectorProps, SelectorProps> = 
     prefixCls,
     multiple,
     open,
-    mode,
     showSearch,
     tokenWithEnter,
 
@@ -191,9 +191,7 @@ const Selector: React.RefForwardingComponent<RefSelectorProps, SelectorProps> = 
     onInputCompositionEnd,
   };
 
-  const selectNode = multiple ? (
-    <MultipleSelector {...props} {...sharedProps} />
-  ) : (
+  const selectNode = (
     <SingleSelector {...props} {...sharedProps} />
   );
 

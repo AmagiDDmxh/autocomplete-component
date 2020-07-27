@@ -40,6 +40,7 @@ interface Props {
   searchValue?: string;
 
   getInputElement?: () => JSX.Element;
+  
 
   // onInputKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   // onInputMouseDown?: React.MouseEventHandler<HTMLInputElement>;
@@ -64,7 +65,8 @@ const BAutoComplete: FC<Props> = (props) => {
     autoComplete,
     renderOption,
 
-    getInputElement
+    getInputElement,
+    inputRef
   } = props
 
   // States
